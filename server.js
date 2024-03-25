@@ -7,6 +7,10 @@ app.get('/', (req, res) => {
   res.send("Resume Builder!");
 });
 
+app.get('/api', (req, res) => {
+  res.json({ "title": "Resume Builder from API!" });
+});
+
 app.listen(PORT, () => {
   console.log(`Listening at: http://localhost:${PORT}`);
 });
