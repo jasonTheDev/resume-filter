@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 
-function Experience() {
+function Experience({ experience }) {
   return (
-    <p>experience</p>
+    <p>{experience.position}</p>
   );
 }
 
