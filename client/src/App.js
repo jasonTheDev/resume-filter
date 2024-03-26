@@ -6,7 +6,7 @@ function App() {
   const [experiences, setExperiences] = useState();
 
   useEffect(() => {
-    fetch("/experiences").then(
+    fetch("/api/experiences").then(
       response => response.json()
     ).then(
       data => { setExperiences(data);
