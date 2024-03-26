@@ -1,21 +1,28 @@
 import React, { useState, useEffect } from 'react';
+import ExperienceList from './components/ExperienceList';
 
 function App() {
 
-  const [title, setTitle] = useState('Resume Builder from React!');
+  const [experiences, setExperiences] = useState([{}]);
 
   useEffect(() => {
-    fetch("/api").then(
+    fetch("/experiences").then(
       response => response.json()
     ).then(
-      data => { setTitle(data.title);
+      data => { setExperiences(data.experiences);
       }
     )
   }, []);
 
   return (
     <div>
-      <h1>{title}</h1>
+      <h1>Resume Builder</h1>
+      {(typeof experiences === 'undefined') ? (
+        <p>Loading...</p>
+      ): (
+        <ExperienceList experiences={experiences} />
+      )}
+      
     </div>
   )
 }
