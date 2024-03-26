@@ -4,8 +4,11 @@
   "description": "A resume builder web app",
   "main": "server.js",
   "scripts": {
+    "prestart": "cd client && npm run build",
     "start": "node server",
+    "predev": "cd client && npm run build",
     "dev": "nodemon server",
+    "postinstall": "cd client && npm install",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
