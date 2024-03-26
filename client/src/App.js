@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Container, Button } from 'react-bootstrap';
 import ExperienceList from './components/ExperienceList';
 
 function App() {
@@ -16,13 +18,14 @@ function App() {
 
   return (
     <div>
-      <h1>Resume Builder</h1>
-      {(typeof experiences === 'undefined') ? (
-        <p>Loading...</p>
-      ): (
-        <ExperienceList experiences={experiences} />
-      )}
-      
+      <Container className="mt-3">
+        <h1 className="App-title">Resume Builder</h1>
+        {(typeof experiences === 'undefined') ? (
+          <p>Loading...</p>
+        ): (
+          <ExperienceList experiences={experiences} />
+        )}
+      </Container>
     </div>
   )
 }
