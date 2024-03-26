@@ -12,12 +12,13 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'client/build/index.html'));
 });
 
-app.get('/api', (req, res) => {
-  res.json({ "title": "Resume Builder from API!" });
+app.get('/experiences', (req, res) => {
+  res.json(experiences);
 });
 
-app.get('/experiences', (req, res) => {
-  res.json({ "experiences": experiences });
+// TODO: delete
+app.get('/string', (req, res) => {
+  res.send(JSON.stringify(experiences));
 });
 
 app.listen(PORT, () => {

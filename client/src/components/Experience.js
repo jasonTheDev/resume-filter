@@ -1,8 +1,18 @@
-import { useState, useEffect } from 'react';
+import BulletPoint from './BulletPoint';
 
-function Experience({ experience }) {
+function Experience({ position, bullets }) {
   return (
-    <p>{experience.position}</p>
+    <div>
+      <p>{position}</p>
+      {
+        bullets.map((bullet, i) =>
+          <BulletPoint
+            key={i}
+            description={bullet.description}
+          />
+        )
+      }
+    </div>
   );
 }
 

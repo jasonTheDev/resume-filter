@@ -3,13 +3,13 @@ import ExperienceList from './components/ExperienceList';
 
 function App() {
 
-  const [experiences, setExperiences] = useState([{}]);
+  const [experiences, setExperiences] = useState();
 
   useEffect(() => {
     fetch("/experiences").then(
       response => response.json()
     ).then(
-      data => { setExperiences(data.experiences);
+      data => { setExperiences(data);
       }
     )
   }, []);
