@@ -11,6 +11,7 @@ function App() {
   const [uniqueTags, setUniqueTags] = useState([]);
   const [filterTag, setFilterTag] = useState('All');
 
+  // fetch experiences data from API
   useEffect(() => {
     fetch("/api/experiences").then(
       response => response.json()
@@ -22,21 +23,41 @@ function App() {
     )
   }, []);
 
+  // update the unique tags
   useEffect(() => {
     // avoid running before loaded
-    if (typeof experiences === 'undefined') {
-      return;
-    }
-    const tagSet = new Set();
-    experiences.forEach(experience => {
-      experience.bullets.forEach(bullet => {
-        bullet.tags.forEach(tag => {
-          tagSet.add(tag);
+    if (typeof experiences !== 'undefined') {
+      const tagSet = new Set();
+      experiences.forEach(experience => {
+        experience.bullets.forEach(bullet => {
+          bullet.tags.forEach(tag => {
+            tagSet.add(tag);
+          });
         });
       });
-    });
-    setUniqueTags([...tagSet]);
+      setUniqueTags([...tagSet]);
+    }
   }, [experiences]);
+
+  // update filtered experiences
+  useEffect(() => {
+    // avoid running before loaded
+    if (typeof experiences !== 'undefined') {
+      if (filterTag === "All") {
+        setFilteredExperiences(experiences);
+      }
+      else {
+        const filteredExperiences = experiences.map(experience => {
+          const filteredBullets = experience.bullets.filter(bullet => bullet.tags.includes(filterTag));
+          return {
+            ...experience,
+            bullets: filteredBullets
+          };
+        }).filter(experience => experience.bullets.length > 0); // remove empty experiences
+        setFilteredExperiences(filteredExperiences);
+      }
+    }
+  }, [filterTag]);
 
   return (
     <div>
