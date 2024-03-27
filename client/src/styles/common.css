@@ -1,0 +1,31 @@
+h2 {
+  font-size: 20px;
+  padding-right: 0px;
+}
+
+.flex-row-wrap {
+  display: flex;
+  flex-flow: row, wrap;
+}
+
+.tag-container {
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.tag {
+  background-color: #CCC;
+  padding: 2px 10px;
+  font-size: smaller;
+}
+
+.filter-container {
+  display: flex;
+  flex-flow: row, wrap;
+  align-items: center;
+  gap: 50px;
+}
+
+.filter {
+  background-color: #CCC;
+}

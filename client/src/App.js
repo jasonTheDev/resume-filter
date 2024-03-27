@@ -57,23 +57,23 @@ function App() {
         setFilteredExperiences(filteredExperiences);
       }
     }
-  }, [filterTag]);
+  }, [experiences, filterTag]);
 
   return (
     <div>
       <Container className="mt-3">
-        <h1 className="App-title">Resume Builder</h1>
+        <h1>Resume Builder</h1>
         {(typeof filteredExperiences === 'undefined') ? (
           <p>Loading...</p>
         ): (
-          <div>
+          <>
             <ExperienceFilter
               uniqueTags={uniqueTags}
               filterTag={filterTag}
               setFilterTag={setFilterTag}
             />
             <ExperienceList experiences={filteredExperiences} />
-          </div>
+          </>
         )}
       </Container>
     </div>

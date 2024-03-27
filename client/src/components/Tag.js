@@ -1,4 +1,4 @@
-import './Tag.css';
+import '../styles/common.css';
 
 function Tag({ tag }) {
   return (

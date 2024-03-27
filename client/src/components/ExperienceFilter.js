@@ -1,4 +1,5 @@
 import React from "react";
+import '../styles/common.css'
 
 function ExperienceFilter({ uniqueTags, filterTag, setFilterTag }) {
 
@@ -7,8 +8,8 @@ function ExperienceFilter({ uniqueTags, filterTag, setFilterTag }) {
   };
 
   return (
-    <section>
-      <div className="filter-container">
+    <div class="filter-container">
+      <div class="filter">
         <input
           type="radio"
           id="All"
@@ -18,21 +19,21 @@ function ExperienceFilter({ uniqueTags, filterTag, setFilterTag }) {
           onChange={handleFilterChange}
         />
         <label htmlFor="All">All</label>
-        {uniqueTags.map((tag) => (
-          <React.Fragment key={tag}>
-            <input
-              type="radio"
-              id={tag}
-              name="filter"
-              value={tag}
-              checked={filterTag === tag}
-              onChange={handleFilterChange}
-            />
-            <label htmlFor={tag}>{tag}</label>
-          </React.Fragment>
-        ))}
       </div>
-    </section>
+      {uniqueTags.map((tag) => (
+      <div key={tag} class="filter">
+        <input
+          type="radio"
+          id={tag}
+          name="filter"
+          value={tag}
+          checked={filterTag === tag}
+          onChange={handleFilterChange}
+        />
+        <label htmlFor={tag}>{tag}</label>
+      </div>
+      ))}
+    </div>
   );
 }
 
