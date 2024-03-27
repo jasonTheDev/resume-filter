@@ -7,63 +7,36 @@ import ExperienceFilter from './components/ExperienceFilter';
 function App() {
 
   const [experiences, setExperiences] = useState();
-  const [filteredExperiences, setFilteredExperiences] = useState();
   const [uniqueTags, setUniqueTags] = useState([]);
   const [filterTag, setFilterTag] = useState('All');
 
   // fetch experiences data from API
   useEffect(() => {
-    fetch("/api/experiences").then(
+    fetch(`/api/experiences?tag=${filterTag}`).then(
       response => response.json()
     ).then(
       data => {
         setExperiences(data);
-        setFilteredExperiences(data);
       }
     )
-  }, []);
+  }, [filterTag]);
 
   // update the unique tags
   useEffect(() => {
-    // avoid running before loaded
-    if (typeof experiences !== 'undefined') {
-      const tagSet = new Set();
-      experiences.forEach(experience => {
-        experience.bullets.forEach(bullet => {
-          bullet.tags.forEach(tag => {
-            tagSet.add(tag);
-          });
-        });
-      });
-      setUniqueTags([...tagSet]);
-    }
-  }, [experiences]);
-
-  // update filtered experiences
-  useEffect(() => {
-    // avoid running before loaded
-    if (typeof experiences !== 'undefined') {
-      if (filterTag === "All") {
-        setFilteredExperiences(experiences);
+    fetch("/api/experiences/tags").then(
+      response => response.json()
+    ).then(
+      data => {
+        setUniqueTags(data);
       }
-      else {
-        const filteredExperiences = experiences.map(experience => {
-          const filteredBullets = experience.bullets.filter(bullet => bullet.tags.includes(filterTag));
-          return {
-            ...experience,
-            bullets: filteredBullets
-          };
-        }).filter(experience => experience.bullets.length > 0); // remove empty experiences
-        setFilteredExperiences(filteredExperiences);
-      }
-    }
-  }, [experiences, filterTag]);
+    )
+  }, []);
 
   return (
     <div>
       <Container className="mt-3">
         <h1>Resume Builder</h1>
-        {(typeof filteredExperiences === 'undefined') ? (
+        {(typeof experiences === 'undefined') ? (
           <p>Loading...</p>
         ): (
           <>
@@ -72,7 +45,7 @@ function App() {
               filterTag={filterTag}
               setFilterTag={setFilterTag}
             />
-            <ExperienceList experiences={filteredExperiences} />
+            <ExperienceList experiences={experiences} />
           </>
         )}
       </Container>
