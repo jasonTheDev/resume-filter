@@ -1,7 +1,7 @@
 {
-  "name": "react-resume-builder",
+  "name": "resume-filter",
   "version": "1.0.0",
-  "description": "A resume builder web app",
+  "description": "A resume filter web app",
   "main": "server.js",
   "scripts": {
     "prestart": "cd client && npm run build",
