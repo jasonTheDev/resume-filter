@@ -1,9 +1,9 @@
 import '../styles/common.css';
 
-function RadioTag({ tag, filterTag, setFilterTag}) {
+function RadioTag({ tag, selectedTag, setSelectedTag}) {
 
   const handleFilterChange = (event) => {
-    setFilterTag(event.target.value);
+    setSelectedTag(event.target.value);
   };
 
   return (
@@ -13,7 +13,7 @@ function RadioTag({ tag, filterTag, setFilterTag}) {
         id={tag}
         name="filter"
         value={tag}
-        checked={filterTag === tag}
+        checked={selectedTag === tag}
         onChange={handleFilterChange}
       />
       <label

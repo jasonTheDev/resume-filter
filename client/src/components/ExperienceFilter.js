@@ -2,20 +2,21 @@ import React from "react";
 import '../styles/common.css'
 import RadioTag from "./RadioTag";
 
-function ExperienceFilter({ uniqueTags, filterTag, setFilterTag }) {
+function ExperienceFilter({ uniqueTags, selectedTag, setSelectedTag }) {
 
   return (
     <div class="flex-row-wrap center-items">
       <RadioTag
         tag="All"
-        filterTag={filterTag}
-        setFilterTag={setFilterTag}
+        selectedTag={selectedTag}
+        setSelectedTag={setSelectedTag}
       />
-      {uniqueTags.map((tag) => (
+      {uniqueTags.map(tag => (
       <RadioTag
+        key={tag}
         tag={tag}
-        filterTag={filterTag}
-        setFilterTag={setFilterTag}
+        selectedTag={selectedTag}
+        setSelectedTag={setSelectedTag}
       />
       ))}
     </div>

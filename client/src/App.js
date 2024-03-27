@@ -8,18 +8,18 @@ function App() {
 
   const [experiences, setExperiences] = useState();
   const [uniqueTags, setUniqueTags] = useState([]);
-  const [filterTag, setFilterTag] = useState('All');
+  const [selectedTag, setSelectedTag] = useState('All');
 
   // fetch experiences data from API
   useEffect(() => {
-    fetch(`/api/experiences?tag=${filterTag}`).then(
+    fetch(`/api/experiences?tag=${selectedTag}`).then(
       response => response.json()
     ).then(
       data => {
         setExperiences(data);
       }
     )
-  }, [filterTag]);
+  }, [selectedTag]);
 
   // update the unique tags
   useEffect(() => {
@@ -43,8 +43,8 @@ function App() {
           <>
             <ExperienceFilter
               uniqueTags={uniqueTags}
-              filterTag={filterTag}
-              setFilterTag={setFilterTag}
+              selectedTag={selectedTag}
+              setSelectedTag={setSelectedTag}
             />
             <ExperienceList experiences={experiences} />
           </>
@@ -54,4 +54,4 @@ function App() {
   )
 }
 
-export default App
+export default App;
