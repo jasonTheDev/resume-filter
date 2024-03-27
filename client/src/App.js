@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Container, Button } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 import ExperienceList from './components/ExperienceList';
+import ExperienceFilter from './components/ExperienceFilter';
 
 function App() {
 
@@ -23,7 +24,10 @@ function App() {
         {(typeof experiences === 'undefined') ? (
           <p>Loading...</p>
         ): (
-          <ExperienceList experiences={experiences} />
+          <div>
+            <ExperienceFilter experiences={experiences} />
+            <ExperienceList experiences={experiences} />
+          </div>
         )}
       </Container>
     </div>

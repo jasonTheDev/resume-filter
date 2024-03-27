@@ -2,7 +2,7 @@ import Tag from "./Tag";
 
 function BulletPoint({ description, tags }) {
   return (
-      <div class="mb-4">
+      <li class="mb-4">
         <p>{description}</p>
         <div class="flex-row-wrap">
         {
@@ -11,7 +11,7 @@ function BulletPoint({ description, tags }) {
           )
         }
         </div>
-    </div>
+    </li>
   );
 }
 
