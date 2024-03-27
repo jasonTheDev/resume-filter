@@ -9,7 +9,7 @@ function ExperienceFilter({ uniqueTags, filterTag, setFilterTag }) {
 
   return (
     <div class="flex-row-wrap center-items">
-      <div class="tag-box">
+      <div>
         <input
           type="radio"
           id="All"
@@ -18,10 +18,10 @@ function ExperienceFilter({ uniqueTags, filterTag, setFilterTag }) {
           checked={filterTag === 'All'}
           onChange={handleFilterChange}
         />
-        <label htmlFor="All">All</label>
+        <label class="tag-box radio-tag" htmlFor="All">All</label>
       </div>
       {uniqueTags.map((tag) => (
-      <div key={tag} class="tag-box">
+      <div key={tag}>
         <input
           type="radio"
           id={tag}
@@ -30,7 +30,7 @@ function ExperienceFilter({ uniqueTags, filterTag, setFilterTag }) {
           checked={filterTag === tag}
           onChange={handleFilterChange}
         />
-        <label htmlFor={tag}>{tag}</label>
+        <label class="tag-box radio-tag" htmlFor={tag}>{tag}</label>
       </div>
       ))}
     </div>

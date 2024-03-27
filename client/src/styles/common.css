@@ -25,16 +25,20 @@ h2 {
   font-weight: 500;
 }
 
-.tag-box input[type=radio] {
+input[type=radio] {
   opacity: 0;
   position: fixed;
   width: 0;
 }
 
-.tag-box:has(input[type=radio]:checked) {
+input[type=radio]:checked + label {
   background-color: #BBB;
 }
 
-.tag-box:has(input[type=radio]:not(:checked)):hover {
+.radio-tag {
+  cursor: pointer;
+}
+
+.radio-tag:hover {
   background-color: #DDD;
 }
