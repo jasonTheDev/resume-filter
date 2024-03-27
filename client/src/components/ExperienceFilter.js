@@ -8,7 +8,7 @@ function ExperienceFilter({ uniqueTags, filterTag, setFilterTag }) {
   };
 
   return (
-    <div class="flex-row-wrap">
+    <div class="flex-row-wrap center-items">
       <div class="tag-box">
         <input
           type="radio"

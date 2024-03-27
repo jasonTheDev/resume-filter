@@ -1,11 +1,16 @@
 h2 {
-  font-size: 20px;
+  font-size: larger;
 }
 
 .flex-row-wrap {
   display: flex;
   flex-flow: row wrap;
   gap: 10px;
+}
+
+.center-items {
+  justify-content: center;
+  align-items: center;
 }
 
 .tag-box {
