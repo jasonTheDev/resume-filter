@@ -16,6 +16,7 @@ h2 {
 .tag-box {
   background-color: #CCC;
   padding: 2px 12px;
+  border-radius: 2px;
   font-size: smaller;
   font-weight: 500;
 }
@@ -28,4 +29,8 @@ h2 {
 
 .tag-box:has(input[type=radio]:checked) {
   background-color: #BBB;
+}
+
+.tag-box:has(input[type=radio]:not(:checked)):hover {
+  background-color: #DDD;
 }
