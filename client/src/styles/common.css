@@ -2,6 +2,10 @@ h2 {
   font-size: larger;
 }
 
+.container {
+  max-width: 960px;
+}
+
 .flex-row-wrap {
   display: flex;
   flex-flow: row wrap;

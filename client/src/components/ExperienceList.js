@@ -2,7 +2,7 @@ import Experience from './Experience';
 
 function ExperienceList({ experiences }) {
   return (
-    <div>
+    <>
       {
         experiences.map((experience, i) => 
           <Experience 
@@ -12,7 +12,7 @@ function ExperienceList({ experiences }) {
           />
         )
       }
-    </div>
+    </>
   );
 }
 
