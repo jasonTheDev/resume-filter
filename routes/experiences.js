@@ -36,7 +36,6 @@ router.get('/tags', (req, res) => {
 });
 
 router.get('/', (req, res) => {
-  console.log(req.query);
   const tag = req.query.tag;
   const filteredExperiences = filterByTag(tag);
   res.json(filteredExperiences);
