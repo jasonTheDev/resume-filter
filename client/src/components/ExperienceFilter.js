@@ -9,17 +9,17 @@ function ExperienceFilter({ uniqueTags, filterTag, setFilterTag }) {
 
   return (
     <div class="flex-row-wrap">
-    <div class="tag-box">
-      <input
-        type="radio"
-        id="All"
-        name="filter"
-        value="All"
-        checked={filterTag === 'All'}
-        onChange={handleFilterChange}
-      />
-      <label class="tag-box" htmlFor="All">All</label>
-    </div>
+      <div class="tag-box">
+        <input
+          type="radio"
+          id="All"
+          name="filter"
+          value="All"
+          checked={filterTag === 'All'}
+          onChange={handleFilterChange}
+        />
+        <label htmlFor="All">All</label>
+      </div>
       {uniqueTags.map((tag) => (
       <div key={tag} class="tag-box">
         <input
