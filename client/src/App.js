@@ -35,7 +35,8 @@ function App() {
   return (
     <div>
       <Container className="mt-3">
-        <h1>Resume Builder</h1>
+        <h1>Resume Filter</h1>
+        <p class="subtitle">Chick a tag to retrieve filtered experiences from Express back-end.</p>
         {(typeof experiences === 'undefined') ? (
           <p>Loading...</p>
         ): (
