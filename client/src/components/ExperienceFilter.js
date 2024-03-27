@@ -1,24 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React from "react";
 
-function ExperienceFilter({ experiences }) {
-
-  const [uniqueTags, setUniqueTags] = useState([]);
-  const [filter, setFilter] = useState('all');
-
-  useEffect(() => {
-    const tagSet = new Set();
-    experiences.forEach(experience => {
-      experience.bullets.forEach(bullet => {
-        bullet.tags.forEach(tag => {
-          tagSet.add(tag);
-        });
-      });
-    });
-    setUniqueTags([...tagSet]);
-  }, [experiences]);
+function ExperienceFilter({ uniqueTags, filterTag, setFilterTag }) {
 
   const handleFilterChange = (event) => {
-    setFilter(event.target.value);
+    setFilterTag(event.target.value);
   };
 
   return (
@@ -26,13 +11,13 @@ function ExperienceFilter({ experiences }) {
       <div className="filter-container">
         <input
           type="radio"
-          id="all"
+          id="All"
           name="filter"
-          value="all"
-          checked={filter === 'all'}
+          value="All"
+          checked={filterTag === 'All'}
           onChange={handleFilterChange}
         />
-        <label htmlFor="all">All</label>
+        <label htmlFor="All">All</label>
         {uniqueTags.map((tag) => (
           <React.Fragment key={tag}>
             <input
@@ -40,7 +25,7 @@ function ExperienceFilter({ experiences }) {
               id={tag}
               name="filter"
               value={tag}
-              checked={filter === tag}
+              checked={filterTag === tag}
               onChange={handleFilterChange}
             />
             <label htmlFor={tag}>{tag}</label>
