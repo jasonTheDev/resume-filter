@@ -23,7 +23,7 @@ function App() {
 
   // update the unique tags
   useEffect(() => {
-    fetch("/api/experiences/tags").then(
+    fetch("/api/tags").then(
       response => response.json()
     ).then(
       data => {
