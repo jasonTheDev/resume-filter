@@ -18,23 +18,6 @@ function filterByTag(tag) {
   }
 }
 
-function getUniqueTags() {
-  const tagSet = new Set();
-  experiences.forEach(experience => {
-    experience.bullets.forEach(bullet => {
-      bullet.tags.forEach(tag => {
-        tagSet.add(tag);
-      });
-    });
-  });
-  return [...tagSet];
-}
-
-router.get('/tags', (req, res) => {
-  const tags = getUniqueTags();
-  res.json(tags);
-});
-
 router.get('/', (req, res) => {
   const tag = req.query.tag;
   const filteredExperiences = filterByTag(tag);
